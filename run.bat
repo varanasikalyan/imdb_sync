@@ -1,3 +1,3 @@
 @echo off
-python run.py %*
+python run.py office mssql %*
 pause

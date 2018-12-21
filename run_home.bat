@@ -1,3 +1,3 @@
 @echo off
-python run.py home %*
+python run.py home mysql %*
 pause
