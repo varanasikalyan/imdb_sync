@@ -1,7 +1,11 @@
 drop table public.namebasics;
+drop table public.nameknownfortitles;
+drop table public.nameprimaryprofession;
 drop table public.titleakas;
 drop table public.titlebasics;
-drop table public.titlecrew;
+drop table public.titlebasicsgenres;
+drop table public.titledirectors;
+drop table public.titlewriters;
 drop table public.titleepisodes;
 drop table public.titleprincipals;
 drop table public.titleratings;

@@ -14,9 +14,9 @@ CONNECTION_PARAMS = (
 if str(sys.argv[1]) == 'home':
     CONNECTION_PARAMS = (
         "DRIVER={SQL Server Native Client 11.0};"
-        "SERVER=lenovo;"
+        "SERVER=varanasikalyan;"
         "DATABASE=imdb;"
-        "UID=lenovo\\Kalyan;"
+        "UID=varanasikalyan\\Kalyan;"
         "Trusted_Connection=yes;"
     )
 
