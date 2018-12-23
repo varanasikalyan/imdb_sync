@@ -8,9 +8,6 @@
 # Copyright:   (c) kkrishnav 2018
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-from sqlalchemy import create_engine
-import config
-
-engine = create_engine(config.CONNECTION_STRING, echo=False)
-
-from originals import *
+from .download import *
+download_data()
+from tsv_data import *
