@@ -1,12 +1,12 @@
 DATA_SOURCES = {
     'url': 'https://datasets.imdbws.com/',
     'file_extension': '.gz',
-    'files': ['name.basics.tsv',\
-        'title.akas.tsv',\
-        'title.basics.tsv',\
-        'title.crew.tsv',\
-        'title.episode.tsv',\
-        'title.principals.tsv',\
-        'title.ratings.tsv',\
-    ]
+    'files': {'namebasics': 'name.basics.tsv',\
+        'titleakas': 'title.akas.tsv',\
+        'titlebasics': 'title.basics.tsv',\
+        'titlecrew': 'title.crew.tsv',\
+        'titleepisodes': 'title.episode.tsv',\
+        'titleprincipals': 'title.principals.tsv',\
+        'titleratings': 'title.ratings.tsv',\
+    }
 }

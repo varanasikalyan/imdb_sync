@@ -9,5 +9,4 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 from .download import *
-download_data()
 from tsv_data import *
