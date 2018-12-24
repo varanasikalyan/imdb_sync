@@ -21,6 +21,14 @@ def load_tsv_to_sql(file, df_options=None):
 			"""Set the appropriate datatypes to the columns"""
 			df = df.astype(value['dtype'], copy=True)
 
+			"""Split column if required"""
+			if 'split' in value.keys():
+				for iden, elem in value['split'].items():
+					df = df.drop(elem, axis=1).join(df[elem].str.split(",", expand = True).stack().reset_index(drop=True, level=1).rename(elem))
+
+			"""ReIndex the data frame"""
+			df.index = pd.RangeIndex(start=1, stop=len(df.index) + 1, step=1)
+
 			"""Dumping the data into database"""
 			print('Dumping the latest data for table: {0} from tsv into db.'.format(key))
 			df.to_sql(key, con=engine, if_exists='replace')
