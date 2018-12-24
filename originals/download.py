@@ -14,7 +14,7 @@ def download_data():
 
 			downloaded = 0
 
-			with open('tsv_data\\{0}\\{1}'.format(key, value),"wb") as gz_file:
+			with open('tsv_data\\{0}\\{1}'.format(key, file_name),"wb") as gz_file:
 				for chunk in r.iter_content(chunk_size=1024):
 				# writing one chunk at a time to gz_file file
 					if chunk:
@@ -27,6 +27,7 @@ def download_data():
 				sys.stdout.write("\rDownloaded {0}: {1} MB".format(value, round(downloaded / 1024, 3)))
 				del gz_file
 				gc.collect()
+				extract_gz('tsv_data\\{0}\\{1}'.format(key, file_name), 'tsv_data\\{0}\\{1}'.format(key, value))
 
 			sys.stdout.write('\n\n')
 			del r
