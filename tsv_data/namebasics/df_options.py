@@ -11,11 +11,13 @@ df_options['namebasics'] = {
 df_options['nameprimaryprofession'] = {
 		'columns': ['nconst', 'primaryProfession'],
 		'dtype': {'nconst':'object', 'primaryProfession':'object'},
-		'split':{'nconst': 'primaryProfession'}
+		'mapping': {'\\N': None},
+		'un_group_by':{'nconst': 'primaryProfession'}
 	}
 
 df_options['nameknownfortitles'] = {
 		'columns': ['nconst', 'knownForTitles'],
 		'dtype': {'nconst':'object', 'knownForTitles':'object'},
-		'split': {'nconst': 'knownForTitles'}
+		'mapping': {'\\N': None},
+		'un_group_by': {'nconst': 'knownForTitles'}
 	}

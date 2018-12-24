@@ -10,5 +10,7 @@ df_options['titlebasics'] = {
 
 df_options['titlebasicsgenres'] = {
 		'columns': ['tconst', 'genres'],
-		'dtype': {'tconst':'object', 'genres':'object'}
+		'dtype': {'tconst':'object', 'genres':'object'},
+		'mapping': {'\\N': None},
+		'un_group_by': {'tconst': 'genres'}
 	}

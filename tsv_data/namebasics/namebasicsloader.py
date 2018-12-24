@@ -21,9 +21,9 @@ def load_tsv_to_sql(file, df_options=None):
 			"""Set the appropriate datatypes to the columns"""
 			df = df.astype(value['dtype'], copy=True)
 
-			"""Split column if required"""
-			if 'split' in value.keys():
-				for iden, elem in value['split'].items():
+			"""Un Groupby column if required"""
+			if 'un_group_by' in value.keys():
+				for iden, elem in value['un_group_by'].items():
 					df = df.drop(elem, axis=1).join(df[elem].str.split(",", expand = True).stack().reset_index(drop=True, level=1).rename(elem))
 
 			"""ReIndex the data frame"""
