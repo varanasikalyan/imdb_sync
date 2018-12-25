@@ -21,17 +21,19 @@ def download_data():
 						gz_file.write(chunk)
 						downloaded = downloaded + 1
 						if(downloaded % 5000 == 0):
-							sys.stdout.write("\rDownloaded {0}: {1} MB ".format(value, round(downloaded / 1024, 3)))
+							sys.stdout.write("\rDownloaded {0}: {1} MB   ".format(value, round(downloaded / 1024, 3)))
 							sys.stdout.flush()
 
-				sys.stdout.write("\rDownloaded {0}: {1} MB".format(value, round(downloaded / 1024, 3)))
+				sys.stdout.write("\rDownloaded {0}: {1} MB   ".format(value, round(downloaded / 1024, 3)))
+				gz_file.close()
 				del gz_file
 				gc.collect()
-				extract_gz('tsv_data\\{0}\\{1}'.format(key, file_name), 'tsv_data\\{0}\\{1}'.format(key, value))
 
-			sys.stdout.write('\n\n')
+			sys.stdout.write('\n')
 			del r
 			gc.collect()
+			extract_gz('tsv_data\\{0}\\{1}'.format(key, file_name), 'tsv_data\\{0}\\{1}'.format(key, value))
+
 	except Exception as e:
 		print("Unexpected error:", str(e))
 		raise

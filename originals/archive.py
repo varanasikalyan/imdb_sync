@@ -1,12 +1,13 @@
+import sys
+
 def extract_gz(source_file, target_file):
-	from gzip import GzipFile
-	in_file = GzipFile(source_file, 'rb')
-	stream = in_file.read()
-	
-	out_file = file(target_file, 'wb')
-	out_file.write(stream)
-	out_file.close()
-	in_file.close()
+	from gzip import open as gopen
+	from shutil import copyfileobj
+	with gopen(source_file, 'rb') as f_in:
+		sys.stdout.write('Extracting download file {0}\n'.format(source_file))
+		with open(target_file, 'wb') as f_out:
+			sys.stdout.write('Writing download file to {0}\n\n'.format(target_file))
+			copyfileobj(f_in, f_out)	
 			
 def extract_zip(source_zip, target_dir):
 	from zipfile import ZipFile, extractall
