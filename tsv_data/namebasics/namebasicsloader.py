@@ -15,7 +15,7 @@ def load_tsv_to_sql(file, df_options=None):
             """Loading initial dataframe"""
             print('Pulling the latest data for table: {0} from tsv.'.format(key))
             count = 1
-            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], encoding='utf-8', chunksize=config.CHUNK_SIZE):
+            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], encoding='utf-8', index_col=False, chunksize=config.CHUNK_SIZE):
                 sys.stdout.write("\rProcessing {0}K Rows   ".format((count * config.CHUNK_SIZE) / 1000))
                 """Cleaning \\N values in year with None"""
                 if 'mapping' in value.keys():
@@ -39,6 +39,7 @@ def load_tsv_to_sql(file, df_options=None):
                 del df
                 gc.collect()
                 count = count + 1
+            sys.stdout.write("\n")
     except Exception as e:
         print("Unexpected error:", str(e))      
         raise

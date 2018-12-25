@@ -39,6 +39,7 @@ def load_tsv_to_sql(file, df_options=None):
                 del df
                 gc.collect()
                 count = count + 1
+            sys.stdout.write("\n")
     except Exception as e:
         print("Unexpected error:", str(e))      
         raise
