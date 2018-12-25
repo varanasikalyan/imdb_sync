@@ -29,8 +29,8 @@ def load_tsv_to_sql(file, df_options=None):
                     for iden, elem in value['un_group_by'].items():
                         df = df.drop(elem, axis=1).join(df[elem].str.split(",", expand = True).stack().reset_index(drop=True, level=1).rename(elem))
 
-                """ReIndex the data frame"""
-                df.index = pd.RangeIndex(start=1, stop=len(df.index) + 1, step=1)
+                """ReIndex the data frame"""                
+                df.set_index(value['index'], inplace=True)
                 
                 """Dumping the data into database"""            
                 df.to_sql(key, con=engine, if_exists='append')

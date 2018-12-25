@@ -15,7 +15,7 @@ def load_tsv_to_sql(file, df_options=None):
             """Loading initial dataframe"""
             print('Pulling the latest data for table: {0} from tsv.'.format(key))
             count = 1
-            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], encoding='utf-8', index_col=False, chunksize=config.CHUNK_SIZE):
+            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], encoding='utf-8', chunksize=config.CHUNK_SIZE):
                 sys.stdout.write("\rProcessing {0}K Rows   ".format((count * config.CHUNK_SIZE) / 1000))
                 """Cleaning \\N values in year with None"""
                 if 'mapping' in value.keys():
@@ -29,8 +29,8 @@ def load_tsv_to_sql(file, df_options=None):
                     for iden, elem in value['un_group_by'].items():
                         df = df.drop(elem, axis=1).join(df[elem].str.split(",", expand = True).stack().reset_index(drop=True, level=1).rename(elem))
 
-                """ReIndex the data frame"""
-                df.index = pd.RangeIndex(start=1, stop=len(df.index) + 1, step=1)
+                """ReIndex the data frame"""                
+                df.set_index(value['index'], inplace=True)
                 
                 """Dumping the data into database"""            
                 df.to_sql(key, con=engine, if_exists='append')
