@@ -29,3 +29,5 @@ else:
         CONNECTION_STRING = 'postgresql+psycopg2://postgres:qwerty@localhost/imdb'
     else:
         CONNECTION_STRING = 'mssql+pyodbc:///?odbc_connect={0}'.format(urllib.parse.quote_plus(CONNECTION_PARAMS))
+
+CHUNK_SIZE = 100000
