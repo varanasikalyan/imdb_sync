@@ -15,7 +15,7 @@ def load_tsv_to_sql(file, df_options=None):
             """Loading initial dataframe"""
             print('Pulling the latest data for table: {0} from tsv.'.format(key))
             count = 1
-            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], encoding='utf-8', chunksize=config.CHUNK_SIZE):
+            for df in pd.read_csv(tsv_path, sep='\t', usecols=value['columns'], converters=value['converters'], encoding='utf-8', chunksize=config.CHUNK_SIZE):
                 sys.stdout.write("\rProcessing {0}K Rows   ".format((count * config.CHUNK_SIZE) / 1000))
                 """Cleaning \\N values in year with None"""
                 if 'mapping' in value.keys():
@@ -55,4 +55,4 @@ def get_tsv_path(filename):
             if file.endswith(".tsv"):
                 return os.path.join(root, file)
 
-load_tsv_to_sql('titlebasics', df_options)
+# load_tsv_to_sql('titlebasics', df_options)

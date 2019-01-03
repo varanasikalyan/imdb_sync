@@ -1,0 +1,11 @@
+delete from dbo.namebasics;
+delete from dbo.nameknownfortitles;
+delete from dbo.nameprimaryprofession;
+delete from dbo.titleakas;
+delete from dbo.titlebasics;
+delete from dbo.titlebasicsgenres;
+delete from dbo.titledirectors;
+delete from dbo.titlewriters;
+delete from dbo.titleepisodes;
+delete from dbo.titleprincipals;
+delete from dbo.titleratings;
