@@ -55,4 +55,4 @@ def get_tsv_path(filename):
             if file.endswith(".tsv"):
                 return os.path.join(root, file)
 
-load_tsv_to_sql('titleepisodes', df_options)
+# load_tsv_to_sql('titleepisodes', df_options)
