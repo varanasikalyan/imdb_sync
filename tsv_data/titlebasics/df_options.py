@@ -29,7 +29,7 @@ df_options = OrderedDict()
 df_options['titlebasics'] = {
 		'index': 'tconst',
 		'columns': ['tconst', 'titleType', 'primaryTitle', 'originalTitle', 'isAdult', 'startYear', 'endYear', 'runtimeMinutes'],
-		'dtype': {'tconst':'object', 'titleType':'object', 'primaryTitle': 'object', 'originalTitle': 'object', 'isAdult': 'bool', 'startYear': 'int', 'endYear': 'int', 'runtimeMinutes': 'int'},
+		'dtype': {'tconst':'object', 'titleType':'object', 'primaryTitle': 'object', 'originalTitle': 'object', 'isAdult': 'bool', 'startYear': 'object', 'endYear': 'object', 'runtimeMinutes': 'object'},
 		'mapping': {'\\N': 0},
 		'converters': {'startYear': start_year, 'endYear': end_year, 'runtimeMinutes': runtime_minutes}
 	}
